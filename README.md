@@ -20,7 +20,9 @@ If you're on Windows, PowerShell might not recognize the `~`. In this case, use 
 
 
 `-t`: Specifies the type of key (ed25519 is recommended).
+
 `-f`: Specifies the filename and location.
+
 `-C`: Adds a comment (optional but useful for identification).
 
 This command will generate two files:
