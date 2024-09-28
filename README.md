@@ -6,12 +6,12 @@ This tutorial will guide you through creating SSH keys, setting up an Arch Linux
 
 ## Step 1: Create an SSH Key Pair on Your Local Machine
 
-**SSH keys** are used to authenticate secure connections between two machines. A key pair consists of a public key (shared with the server) and a private key (kept securely on your machine).
+**SSH keys**  are a method of securely logging into a server without needing to enter a password. They use cryptographic keys: a public key stored on the server and a private key stored on your machine. Only a person with the private key can log into the server.
 
-To create a new SSH key pair, run the following command in your terminal:
+*To generate an SSH key pair on your local machine, open your terminal (or PowerShell on Windows) and run:*
 
 
-`ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"`
+>`ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"`
 
 `~`: Refers to your home directory.This is where the key will be stored by default unless you specify a different location.
 Replace `"your email address"` with your actual email. This email will be embedded in the public key as a comment, which is useful for identifying the key.
