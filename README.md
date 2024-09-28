@@ -17,11 +17,11 @@ This tutorial will guide you through creating SSH keys, setting up an Arch Linux
 Replace `"your email address"` with your actual email. This email will be embedded in the public key as a comment, which is useful for identifying the key.
 
 Breakdown of the Command:
-`ssh-keygen`: This is the command used to generate SSH keys.
-`-t ed25519`: Specifies the type of key to generate. Ed25519 is a modern, faster, and more secure option than RSA and is recommended for most cases.
-`-f ~/.ssh/do-key`: Specifies the filename and location where the key files will be saved.
-`~/.ssh/`: The default folder where SSH keys are stored.
-`do-key`: The name of the key file.
+`ssh-keygen`: This is the command used to generate SSH keys.<br>
+`-t ed25519`: Specifies the type of key to generate. Ed25519 is a modern, faster, and more secure option than RSA and is recommended for most cases.<br>
+`-f ~/.ssh/do-key`: Specifies the filename and location where the key files will be saved.<br>
+`~/.ssh/`: The default folder where SSH keys are stored.<br>
+`do-key`: The name of the key file.<br>
 `-C "your email address"`: Adds a comment to the key, often used for identifying the key with your email.
 
 If you're on Windows, PowerShell might not recognize the `~`. In this case, use the full path:
