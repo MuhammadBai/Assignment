@@ -91,17 +91,19 @@ Adding your SSH key here will allow you to authenticate securely when creating n
 
 ## Step 6: Creating a New Droplet on DigitalOcean
 Now, let's create your new server (Droplet) on DigitalOcean.<br>
+
 *Before we get started..*<br>
 A **Droplet** is a virtual private server (VPS) on DigitalOcean. Here’s how to create one running Arch Linux:
 
 From the DigitalOcean dashboard, 
-2. click **Create** on the top-right corner and select **Droplets**.
-3. Under **Custom Images**, select **Arch Linux**.
-4. Select the Region where you want your Droplet to be hosted (e.g., **San Francisco**).
-5. Select **Datacenter SF03** as the specific data center.
-6. Under **Droplet Size**, select **Basic** and pick the $7 (AMD) or $8 (Intel) option, depending on your preference.
-7. Under **Authentication**, choose the SSH key you added earlier.
-8. Optionally, change the hostname to something short and memorable, like `bcit`.
+
+1. click **Create** on the top-right corner and select **Droplets**.
+2. Under **Custom Images**, select **Arch Linux**.
+3. Select the Region where you want your Droplet to be hosted (e.g., **San Francisco**).
+4. Select **Datacenter SF03** as the specific data center.
+5. Under **Droplet Size**, select **Basic** and pick the $7 (AMD) or $8 (Intel) option, depending on your preference.
+6. Under **Authentication**, choose the SSH key you added earlier.
+7. Optionally, change the hostname to something short and memorable, like `bcit`.
 
 After completing these steps, DigitalOcean will generate an IP address for your new Droplet. Save this IP, as it will be needed for future SSH connections.
 
@@ -117,13 +119,13 @@ To exit the SSH session, simply type:
 >`exit`
 
 ### Additional Notes for Beginners
-- What is SSH?
+- What is SSH?<br>
 SSH (Secure Shell) is a way to connect to another computer over the internet in a secure way. It lets you control and manage that computer remotely, which is really useful for tasks like managing servers. Instead of using passwords, SSH often uses special cryptographic keys to make sure only authorized users can access the system.
 
-- What is a Droplet?
+- What is a Droplet?<br>
 A Droplet is like your own personal computer, but it's hosted in the cloud. DigitalOcean provides these virtual machines that you can use to run websites, apps, or any other services. You can think of it as a server that you can easily set up and control through their platform.
 
-- What is Arch Linux?
+- What is Arch Linux?<br>
 Arch Linux is a type of operating system that's known for being lightweight and super customizable. It's perfect for people who want more control over how their system works. Arch is popular with advanced users because it’s simple at its core but allows for a lot of flexibility when setting things up.
 
 ### Conclusion
@@ -131,7 +133,7 @@ By following this guide, you’ve successfully:
 
 - Created an SSH key pair to securely log into remote servers.
 - Added the public key to DigitalOcean for authentication.
-- Created and connected to an Arch Linux Droplet via SSH.
+- Created and connected to an Arch Linux Droplet via SSH.<br>
 This setup improves security by using SSH keys instead of passwords. Keep your private key safe and do not share it. If you need to perform administrative tasks on your server, you can now do so remotely from your local machine.
 
 Remember to keep your private key safe, and never share it with anyone!
