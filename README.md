@@ -1,121 +1,105 @@
 # Assignment
-Tutorial to create a new SSH Key pair on your local machine
 
-Step 1) 
-First you will need to create .ssh directory in your home directory
-so the following command to create it:
-  *ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"*
+# Tutorial: Creating an SSH Key Pair and Deploying a DigitalOcean Droplet
 
-the above command have ~(tilde) which is your home directory.
-replace "your email address" with your email address.
+This tutorial will guide you through creating SSH keys, setting up an Arch Linux Droplet on DigitalOcean, and connecting to it using SSH.
 
-Go to 2nd step if the above step doesnt work.
-Step 2) 
-In Windows PowerShell tilde expansion doesnt always work, so you can enter the full and replace your your-user-name with your Windows user name in the following command:
- *ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"*
+## Step 1: Create an SSH Key Pair on Your Local Machine
 
--t = type (this is the type of encryption used for the key)
--f = filename (specify filename and location)
--C = comment (attaches a comment to a key)
+To create a new SSH key pair, run the following command in your terminal:
 
-The above command will create two plain text files in the .ssh directory, and you will be able to see the public and private key created:
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"
 
-"do-key" This is your private key.
-"do-key.pub" This is your public key. The public key is the one that you copy to your server. 
+`~`: Refers to your home directory.
+Replace `"your email address"` with your actual email.
 
-Once you have an Arch Linux VM(virtual machine) set up you will be able to see the manual pages by typing the following command:
-*man ssh-keygen*
+If you're on Windows, PowerShell might not recognize the `~`. In this case, use the full path:
 
-Function of ssh-keygen:
-ssh-keygen generates, manages and converts authentication keys for ssh(1). ssh-keygen can create keys for use by SSH protocol version 2.
+`ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"`
 
-To check whether you can remotely connect to your arch server type the following commands:
-Your-user-name you set when creating the account with ssh
-*ssh your-user-name*
 
-once you successfully logged into your remote linux server, go to Step 3:
+`-t`: Specifies the type of key (ed25519 is recommended).
+`-f`: Specifies the filename and location.
+`-C`: Adds a comment (optional but useful for identification).
 
-Step 3)
-Exit from your remote server by typing exit command 
-i.e *exit*
+This command will generate two files:
+`do-key` (private key)
+`do-key.pub` (public key)
 
-The above step will take you to your home directory:
-then from your home directory >> go to .ssh directory by typing the following command:
-cd .ssh
- once you are in the .ssh >> type ls to see if the public and private keys are created in your computer it will show you the Name with time
+##Step 2: Accessing the Manual Pages
+To learn more about `ssh-keygen`, you can access the manual pages on your Arch Linux VM by running:
+`man ssh-keygen`
 
-Once it is created you will see the keys with the name you set them. 
+This provides detailed information about the `ssh-keygen` tool.
 
-Two ways you can copy your public key:
-1) you can copy the conents directly from the terminal.
---The commands below are exampes of how you can copy the contents of file to your clipboard from the terminal.
+##Step 3: Verify Connection to Your Droplet
+Once you have set up your Arch Linux Droplet, check if you can connect remotely using SSH:
+`ssh your-user-name@your-droplets-ip-address`
 
-In PowerShell:
-*Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard*
- 
-For MacOS users:
-*pbcopy < ~/.ssh/do-key.pub*
+Replace `your-user-name` and `your-droplets-ip-address` with your actual username and IP.
 
-For Linux Users:
-*wl-copy < ~/.ssh/do-key.pub*
+To exit the remote connection, use:
+`exit`
 
-2) Since the key is in a plain text file you can open it in VSCode and copy it like any other text
+##Step 4: Copy Your Public Key
 
-To open it in the VSCode, you need to be in your home directory which is not Linux, so after listing the keys you created in .ssh file you list them by typing ls to see the name of your keys i.e public and private keys. 
-Type 
-*code your-key.pub*
-By typing the above command you can copy your public key.
+After generating the SSH keys, you need to copy your public key. There are two ways to do this:
 
-either way 
+###Method 1: Using Terminal Commands
+Windows (PowerShell):
+`Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard`
 
-Step 4)
- Adding the copied public key to the digital ocean account  
- steps to follow:
- 1. Go to Settings in menu in the left menu.
- 2. Click the Security tab.
- 3. Next Click the "Add SSH key" button.
- 4. Paste the contents of your public key into 
-    the SSH Key box.
- 5. Give your key a name. For example for laptop 
-    it can be lap-2121, and for desktop desk-2121. 
+MacOS:
+`pbcopy < ~/.ssh/do-key.pub`
 
- Step 5) 
- To create a new droplet:
- Click Create on the top right corner, and select Droplets from the dropdown list. 
+Linux:
+`wl-copy < ~/.ssh/do-key.pub`
 
- Step 6)
- To choose the appropriate settings for your droplet follow the steps below:
- 1. Choose Region = San Francisco
- 2. Select Datacenter = SF03
- 3. Click "Custom images" to select Arch Linux you uploaded.
- 4. Leave the size on "Basic"
- 5. Select the $7 option under Premium AMD or $8 option under Premium intel. 
- 6. Choose SSH key as an Authentication method that you added to your account previously. 
- 7. Change Hostname to something shorter like bcit, you will see this name in your prompt when you are connected to your server.
- leave the rest of the settings as default.
+###Method 2: Using a Text Editor
+You can also open the `.pub` file in a text editor (like VS Code) and copy it manually. Navigate to your `.ssh` directory and use:
+`code ~/.ssh/do-key.pub`
 
- if everything worked you should see something like the following:
- hostname with is your-hostname
- 209.54.23.23.45 is the IP address it will show you with your hostname. 
+##Step 5: Add Your SSH Key to DigitalOcean
+1. Log into your DigitalOcean account.
+2. Go to Settings from the left-hand menu.
+3. Click the Security tab.
+4. Select Add SSH Key.
+5. Paste the content of your public key into the provided field.
+6. Give your key a recognizable name (e.g.,`laptop-ssh-key`).
 
- Step 7)
- In this step you will be connecting to your droplet via ssh through your command prompt
- 
- You can use the following command to connect it the server you created in digitalocean account.
+##Step 6: Create a New Droplet on DigitalOcean
+1. Click Create on the top-right corner of the DigitalOcean dashboard and choose Droplets.
+2. Select Arch Linux from the Custom Images tab.
+3. Choose the Region (e.g., San Francisco).
+4. Select Datacenter SF03.
+5. Choose Basic for the Droplet size, and select the $7 (AMD) or $8 (Intel) option.
+6. Under Authentication, select the SSH key you previously added.
+7. Optionally, change the hostname to something short, like bcit.
 
- ssh -i .ssh/do-key arch@your-droplets-ip-address
--i = identify_file, identify file, the path to the private key file.
-arch = your username, The image that we used contains a regular user named "arch"
+If everything is set up correctly, you’ll be provided with an IP address for your Droplet.
 
-To exit your SSH connect just type exit and press enter.
+##Step 7: Connect to Your Droplet via SSH
+Now, connect to your Arch Linux Droplet by running the following command:
+`ssh -i ~/.ssh/do-key arch@your-droplets-ip-address`
+
+`-i`: Specifies the identity file (your private key).
+`arch`: The default username for the Arch Linux image.
+
+To exit the SSH session, simply type:
+`exit`
 
 
 
- 
 
 
 
-To Add your public key to your DigitalOcean account < you should be able to access it to copy the public key and paste it in your DigitalOcean acount
+
+
+
+
+
+
 
 
 
