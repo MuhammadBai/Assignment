@@ -8,7 +8,7 @@ This tutorial will guide you through creating SSH keys, setting up an Arch Linux
 
 To create a new SSH key pair, run the following command in your terminal:
 
-```bash
+
 ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"
 
 `~`: Refers to your home directory.
