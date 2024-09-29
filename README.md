@@ -164,9 +164,49 @@ For example, if you want to create a new user, install essential software, or ad
 
 ## Step 1: Creating a new SSH key for cloud-init server:
 
+*Note:
+so when we added our SSH key in our first server that we created on the digital ocean console, we added the SSH key to digital ocean and then we selected it, when we created our servers and that gets copied over into our droplet into the .SSH authorized key file. Our server there is a >SSH directory that gets created and authorized key giles that contains a public key, so we would like to have the key added to our server, but we will have to make sure we use different key everytime*
 
 
+In our first step we will need to create a new SSH key:
+**We can do so with the following command, but this time you should make sure its not identical to your existing keys.**
 
+*To generate a key type:*
+>`ssh-keygen -t ed25519 -f ~/.ssh/your-key -C "your email address"`
+
+### Breaking Down the Command:
+- ssh-keygen: This is the command used to generate SSH keys.
+- -t ed25519: Specifies the type of key to create. In this case, it's the Ed25519 key, which is a modern and secure choice.
+- -f ~/.ssh/do-key: Specifies the file name and location to save the generated key. It will save it as do-key in the ~/.ssh/ directory.
+- -C "your email address": This is an optional comment field, typically used to identify the key, such as associating it with your email.
+
+**Please make sure you replace your-key and your-email-address with your actual username and email address**
+
+## Step 2: To Retrieve your public key:
+
+### Why are we retrieving our public key?
+We are retrieving the public key because we will be using to our cloud-init config.
+
+*you can display using the following command:*
+>`cat ~/.ssh/your-key.pub`
+
+**Replace your key-pub with your actual key name**
+
+## Step 3: Add the public key to your cloud-init YAML file under the ssh-authorized-keys section:
+
+>`ssh-authorized-keys:
+> - ssh-ed25519 your-ssh-public-key  # Replace >with the key you retrieved`
+
+## Step 4: open the yaml file into Visual studio code through the terminal with the following command
+>`code config.yaml`
+
+### Breakdown of the command:
+
+- `code`: This command is used to open files or directories in *Visual Studio Code* (VS Code), a popular code editor. The `code` command launches VS Code from the terminal.
+
+- `config.yaml`: This is the file you are instructing VS Code to open. In this case, it's a configuration file with the extension `.yaml`, which indicates it's written in YAML (YAML Ain't Markup Language) format, commonly used for configuration files.
+
+- **Putting it all together**: The command `code config.yaml` opens the **config.yaml** file in **VS Code**. If the file doesn't exist, VS Code will create it once you save any changes.
 
 
 
