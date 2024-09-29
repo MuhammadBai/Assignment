@@ -10,7 +10,7 @@ This tutorial will guide you through creating SSH keys, setting up an Arch Linux
 
 *To generate an SSH key pair on your local machine, open your terminal (or PowerShell on Windows) and run:*
 
-```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"```
+>`ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"`
 
 Breakdown of the Command:<br>
 - `ssh-keygen`: This is the command used to generate SSH keys.<br>
@@ -154,11 +154,12 @@ When you create a server, cloud-init runs a special script (a configuration file
 
 ### Why Configure Tasks with Cloud-init?
 
-When we use cloud-int it saves a lot of time by automatinf these repetitive tasks. Instead of logging in to each new server and manually setting things up, you can write a cloud-init configuration file and which is usually is YAML(YML) format, and it will handle things for you.
+When we use cloud-int it saves a lot of time by automating these repetitive tasks. Instead of logging in to each new server and manually setting things up, you can write a cloud-init configuration file and which is usually is YAML(YML) format, and it will handle things for you.
 
 For example, if you want to create a new user, install essential software, or add your SSH key, you can just define that in the configuration file, and cloud-init will take care of the rest when the server starts. This is especially useful when working with many servers or if you want to ensure consistency in your setups.
 
 *Suppose you have 10 servers to setup, and we are making a SSH connection to all those server which will be a tedious task. time consuming tasks such as conencting to them, installing the software repetitively. it is fine to do it for one or two servers, but it will take our a lot of time doing the same configuration for each server. To make this easier, we will rather make a config file that uses cloud-init which is easier to reproduce you just copy cloud-init confuguration and paste it into you cloud config file*
+**[Source of the 10 servers example from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**: 
 
 *cloud-init comes with every linux distribution this file is usually written in YAML which is easier to read than JSON file*
 
@@ -263,7 +264,20 @@ packages:
 
 disable_root: true
 ```
+#### So in our step 4 above we created the **cloud.config** file where we will paste the the above **cloud-init configuration**
 
+- Once you paste the above script in to your cloud-config file.
+
+- change the name and primary group(primary group by default is same as username)
+- Replace the public key with your SSH public key which you can copy the public key from your terminal by typing the following command:
+> `cat ~/.ssh/do-key.pub`
+- paste it into your cloud config file where there is ssh-authorized-key field **For more detail follow the step 2 and 3 for more detail.
+
+## Important!
+** We cant connect to our servers via SSH as the root user.
+** We are connecting new as an arch user which is the default user that comes with the arch linux cloud image that we have been using.
+** it is a security risk to connect as the root user.
+**[Source of Important from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**:
 
 
 
