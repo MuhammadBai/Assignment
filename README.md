@@ -157,6 +157,7 @@ When you create a server, cloud-init runs a special script (a configuration file
 When we use cloud-int it saves a lot of time by automating these repetitive tasks. Instead of logging in to each new server and manually setting things up, you can write a cloud-init configuration file and which is usually is YAML(YML) format, and it will handle things for you.
 
 For example, if you want to create a new user, install essential software, or add your SSH key, you can just define that in the configuration file, and cloud-init will take care of the rest when the server starts. This is especially useful when working with many servers or if you want to ensure consistency in your setups.
+**[Source for cloud-init](https://docs.cloud-init.io/en/latest/index.html)**
 
 *Suppose you have 10 servers to setup, and we are making a SSH connection to all those server which will be a tedious task. time consuming tasks such as conencting to them, installing the software repetitively. it is fine to do it for one or two servers, but it will take our a lot of time doing the same configuration for each server. To make this easier, we will rather make a config file that uses cloud-init which is easier to reproduce you just copy cloud-init confuguration and paste it into you cloud config file*
 **[Source of the 10 servers example from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**: 
@@ -271,13 +272,68 @@ disable_root: true
 - change the name and primary group(primary group by default is same as username)
 - Replace the public key with your SSH public key which you can copy the public key from your terminal by typing the following command:
 > `cat ~/.ssh/do-key.pub`
-- paste it into your cloud config file where there is ssh-authorized-key field **For more detail follow the step 2 and 3 for more detail.
+- paste it into your cloud config file where there is ssh-authorized-key field **For more details follow the step 2 and 3 from above cloud-init.
 
 ## Important!
 **We cant connect to our servers via SSH as the root user.** <br>
 **We are connecting new as an arch user which is the default user that comes with the arch linux cloud image that we have been using.** <br>
 **it is a security risk to connect as the root user.**<br>
 **[Source of Important from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**
+
+## Step 6: Copy and paste the configuration that we configured in step 5 into the Digital ocean Droplet:
+Follow the same steps when creating the droplet:
+
+From the DigitalOcean dashboard, 
+1. click **Create** on the top-right corner and select **Droplets**.
+2. Under **Custom Images**, select **Arch Linux**.
+3. Select the Region where you want your Droplet to be hosted (e.g., **San Francisco**).
+4. Select **Datacenter SF03** as the specific data center.
+5. Under **Droplet Size**, select **Basic** and pick the $7 (AMD) or $8 (Intel) option, depending on your preference.
+6. Under **Authentication**, choose the SSH key you added earlier.
+7. In advanced option you will add the cloud-init script that you created. 
+8. Optionally, change the hostname to something short and memorable, like `archers`.
+
+### Why we added the script this time when creating a droplet?
+
+**For example: if we have to this for 10 servers, all we have to do it to select the quantity from the left of box of the script where we created, we can add by clicking the + sign to do the same for as many server as we want**
+
+## Press Create droplet for the droplet to be created.
+
+## Step 7: Steps to connect to a server:
+
+Depending on how you want to be connected to the server you can put this file into SSH config file with the folowing steps:
+1. Go to the .ssh directory.
+2. open the config file by typing code config.
+3. you can add this new server with your other servers you created before all you have to do it paste the following: 
+```Host Your-host-name
+  HostName your-ip-address-from-YAML-droplet
+  User your-user-name
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/your-key
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+```
+- Create a new host for that user name.(you can change the username to something meaningful).
+- Add the ip address you copied from the droplet you created for YAML in the digital ocean.
+- Set your username.
+- `IdentityFile ~/.ssh/your-key` change this to the key you created where it says your-key leave the rest as it is.
+- Save and your remote connection is created.
+
+ you can check from your terminal whether you are able to connect to your server by typing the following command:
+  `ssh your-host-name`
+
+Once connected to your server you can type the following commands:
+
+**Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Yaml ~]$**
+
+[yourusername@Yaml ~]$whereis nvim (This will show where nvim is installed)
+[yourusername@Yaml ~]$ whereis tmux (this will show wher the tmux is installed)
+[yourusername@Yaml ~]$ exit (to exit from remote server)
+
+*To check if cloud-init is active and running, type the following command:*
+>`systemctl status cloud-init` 
+
+
 
 
 
