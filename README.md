@@ -113,7 +113,33 @@ Once your Droplet is created, use the following command to connect via SSH:
 
 - `-i ~/.ssh/do-key`: Specifies the identity file (your private key) that should be used for authentication.
 - `arch`: The default username for Arch Linux Droplets.
-- Replace `your-droplets-ip-address` with the actual IP of your server.
+- Replace `your-droplets-ip-address` with the actual IP of your cloud arch server.
+
+Depending on how you want to be connected to the server you can put this file into SSH config file with the folowing steps:
+1. Go to the .ssh directory.
+2. open the config file by typing code config.
+3. you can add this new server with your other servers you created before all you have to do it paste the following: 
+```Host Your-host-name
+  HostName your-ip-address-from-DigitalOcean-droplet
+  User your-user-name
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/your-key
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+```
+- Create a new host for that user name.(you can change the username to something meaningful).
+- Add the ip address you copied from the droplet you created for Arch in the digital ocean.
+- Set your username.
+- `IdentityFile ~/.ssh/your-key` change this to the key you created where it says your-key leave the rest as it is.
+- Save and your remote connection is created.
+
+ you can check from your terminal whether you are able to connect to your server by typing the following command:
+  `ssh your-host-name`
+
+Once connected to your server you can type the following commands:
+
+**Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Yaml ~]$**
+![Shows arch linux connected to a remote server](assets/Digital_Ocean.png)
 
 To exit the SSH session, simply type:
 >`exit`
