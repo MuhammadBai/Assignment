@@ -325,6 +325,8 @@ Depending on how you want to be connected to the server you can put this file in
 Once connected to your server you can type the following commands:
 
 **Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Yaml ~]$**
+![Shows cloud-init is running](assets/Yaml.png)
+
 
 [yourusername@Yaml ~]$whereis nvim (This will show where nvim is installed)
 [yourusername@Yaml ~]$ whereis tmux (this will show wher the tmux is installed)
