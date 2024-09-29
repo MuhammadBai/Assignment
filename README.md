@@ -182,7 +182,7 @@ In our first step we will need to create a new SSH key:
 
 **Please make sure you replace your-key and your-email-address with your actual username and email address**
 
-## Step 2: To Retrieve your public key:
+## Step 2: Retrieving your public key:
 
 ### Why are we retrieving our public key?
 We are retrieving the public key because we will be using to our cloud-init config.
@@ -206,9 +206,62 @@ We are retrieving the public key because we will be using to our cloud-init conf
 
 - `config.yaml`: This is the file you are instructing VS Code to open. In this case, it's a configuration file with the extension `.yaml`, which indicates it's written in YAML (YAML Ain't Markup Language) format, commonly used for configuration files.
 
+*your YAML file can end with YML or YAML*
+
 - **Putting it all together**: The command `code config.yaml` opens the **config.yaml** file in **VS Code**. If the file doesn't exist, VS Code will create it once you save any changes.
 
+**Once our config file is created now we will have to paste our cloud-init configuration that we created...Go to Step 5**
 
+## Step 5: Where to find or Create a Cloud-init File?
+
+The **cloud-init** file is something you’ll either create yourself or use pre-configured templates, depending on your needs. It's used to automate setup tasks like creating users or installing packages on your server during its initial boot. Here’s how you can find or create one:
+
+**1. Check the Official Cloud-Init Docs**
+
+If you’re new to cloud-init, the best place to start is the official [cloud-init documentation](https://cloudinit.readthedocs.io/en/latest/reference/examples.html). There, you'll find plenty of examples showing how to create users, install software, or configure your server automatically when it's first launched.
+
+**2. Using DigitalOcean Custom Images**
+
+If you’re working on DigitalOcean, you’ll see an option to add **User Data** when creating a new Droplet (DigitalOcean’s term for a virtual machine). This is where you can paste your **cloud-config.yaml** file. To do this:
+
+- When you create a Droplet, scroll down to **Advanced Options.**
+- In the **User Data** field, paste your cloud-init YAML configuration. This is the file that will be run on your server the moment it boots up.
+
+**3. Using Pre-Configured Templates**
+
+You can find plenty of pre-configured cloud-init templates on GitHub or other repositories. These templates can be good starting points, but you’ll likely need to adjust them for your specific use case (like user creation, package installation, etc.).
+
+**4. Writing Your Own Cloud-Init File**
+
+You can also write your own file from scratch! Here’s a basic template to get you started, which sets up a user and installs some useful packages:
+
+
+# Cloud-Config YAML Example
+
+The following is an example of a cloud-init YAML configuration file which we recieved it from Nathan's notes:
+
+```yaml
+#cloud-config
+users:
+  - name: user-name  # Replace this with the username you want
+    primary_group: user-group  # Choose the group for this user
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 your-ssh-public-key  # Replace this with your actual SSH public key
+
+packages:
+  - ripgrep
+  - rsync
+  - neovim
+  - fd
+  - less
+  - man-db
+  - bash-completion
+  - tmux
+
+disable_root: true
 
 
 
