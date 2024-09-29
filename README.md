@@ -274,10 +274,10 @@ disable_root: true
 - paste it into your cloud config file where there is ssh-authorized-key field **For more detail follow the step 2 and 3 for more detail.
 
 ## Important!
-** We cant connect to our servers via SSH as the root user.
-** We are connecting new as an arch user which is the default user that comes with the arch linux cloud image that we have been using.
-** it is a security risk to connect as the root user.
-**[Source of Important from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**:
+**We cant connect to our servers via SSH as the root user.** <br>
+**We are connecting new as an arch user which is the default user that comes with the arch linux cloud image that we have been using.** <br>
+**it is a security risk to connect as the root user.**<br>
+**[Source of Important from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**
 
 
 
