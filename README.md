@@ -10,7 +10,7 @@ This tutorial will guide you through creating SSH keys, setting up an Arch Linux
 
 *To generate an SSH key pair on your local machine, open your terminal (or PowerShell on Windows) and run:*
 
-```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"
+```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address"```
 
 Breakdown of the Command:<br>
 - `ssh-keygen`: This is the command used to generate SSH keys.<br>
@@ -262,7 +262,7 @@ packages:
   - tmux
 
 disable_root: true
-
+```
 
 
 
