@@ -1,4 +1,38 @@
 # Assignment
+                                 
+
+
+
+
+
+
+
+
+                                        **Tutorial on:**
+                                        - Creating an SSH keys on your local machine.
+                                        - Add a custom Arch Linux image using the web console
+                                        - Create a Droplet running Arch Linux using the DigitalOcean web console.
+                                        - Use a cloud-init configuration file to automate initial setup tasks (e.g., user creation).
+                                        - Connect to your server using your SSH keys.
+                                        Muhammad M
+                       Computer Information Technology, British Colombia Institute of Technology 
+                                    ACIT-2420: Linux System Administration
+                                          Professor Nathan McNinch
+                                             September 29, 2024
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
 
 # Tutorial: Creating an SSH Key Pair and Deploying a DigitalOcean Droplet
 
@@ -360,7 +394,7 @@ Once connected to your server you can type the following commands:
 *To check if cloud-init is active and running, type the following command:*
 >`systemctl status cloud-init
 
-## Typing above command will show the results you see in the above screenshot which shows its running
+#### Typing above command will show the results you see in the above screenshot which shows its running
 
 
 
