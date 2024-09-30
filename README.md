@@ -1,37 +1,17 @@
 # Assignment
                                  
+**Tutorial on:**
+- Creating SSH keys on your local machine.
+- Adding a custom Arch Linux image using the web console.
+- Creating a Droplet running Arch Linux using the DigitalOcean web console.
+- Using a cloud-init configuration file to automate initial setup tasks (e.g., user creation).
+- Connecting to your server using your SSH keys.
 
-
-
-
-
-
-
-
-                                        **Tutorial on:**
-                                        - Creating an SSH keys on your local machine.
-                                        - Add a custom Arch Linux image using the web console
-                                        - Create a Droplet running Arch Linux using the DigitalOcean web console.
-                                        - Use a cloud-init configuration file to automate initial setup tasks (e.g., user creation).
-                                        - Connect to your server using your SSH keys.
-                                        Muhammad M
-                       Computer Information Technology, British Colombia Institute of Technology 
-                                    ACIT-2420: Linux System Administration
-                                          Professor Nathan McNinch
-                                             September 29, 2024
-
-
-
-
-
-      
-
-
-
-
-
-
-
+**Author:** Muhammad M  
+**Institution:** Computer Information Technology, British Columbia Institute of Technology  
+**Course:** ACIT-2420: Linux System Administration  
+**Instructor:** Professor Nathan McNinch  
+**Date:** September 29, 2024  
 
 
 # Tutorial: Creating an SSH Key Pair and Deploying a DigitalOcean Droplet
