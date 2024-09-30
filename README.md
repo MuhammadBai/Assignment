@@ -152,7 +152,7 @@ Depending on how you want to be connected to the server you can put this file in
 
 Once connected to your server you can type the following commands:
 
-**Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Arch ~]$**
+**Important: you will know if you are connected to the arch server if you see the following with your commands[yourusername@Arch ~]$**
 ![Shows arch linux connected to a remote server](assets/Digital_Ocean.png)
 
 To exit the SSH session, simply type:
