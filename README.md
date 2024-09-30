@@ -362,7 +362,6 @@ Once connected to your server you can type the following commands:
 
 ## Typing above command will show the results you see in the above screenshot which shows its running
 
-# Automating Arch Linux Droplet Setup with doctl and Cloud-init
 
 
 
