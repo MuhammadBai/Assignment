@@ -138,7 +138,7 @@ Depending on how you want to be connected to the server you can put this file in
 
 Once connected to your server you can type the following commands:
 
-**Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Yaml ~]$**
+**Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Arch ~]$**
 ![Shows arch linux connected to a remote server](assets/Digital_Ocean.png)
 
 To exit the SSH session, simply type:
@@ -165,7 +165,7 @@ This setup improves security by using SSH keys instead of passwords. Keep your p
 
 Remember to keep your private key safe, and never share it with anyone!
 
-## Use a Cloud-init Configuration File to Automate Setup Tasks
+# Use a Cloud-init Configuration File to Automate Setup Tasks
 
 ### What is Cloud-Init?
 
@@ -173,10 +173,10 @@ Cloud-init is used to automate the initial configuration of cloud instances (lik
 
 When you create a server, cloud-init runs a special script (a configuration file) that can do things like:
 
-- Automatically create users
-- Install software packages
-- Set up SSH keys for secure access
-- perform other tasks you would typically do manually
+- **Automatically create users**: Set up user accounts with specific permissions and settings.
+- **Install software packages**: Install necessary software automatically upon instance creation.
+- **Set up SSH keys for secure access**: Ensure that the correct SSH keys are in place for secure login.
+- **Perform other tasks you would typically do manually**: Automate various setup tasks to save time and reduce errors.
 
 ### Why Configure Tasks with Cloud-init?
 
@@ -193,8 +193,8 @@ For example, if you want to create a new user, install essential software, or ad
 ## Step 1: Creating a new SSH key for cloud-init server:
 
 *Note:
-so when we added our SSH key in our first server that we created on the digital ocean console, we added the SSH key to digital ocean and then we selected it, when we created our servers and that gets copied over into our droplet into the .SSH authorized key file. Our server there is a >SSH directory that gets created and authorized key giles that contains a public key, so we would like to have the key added to our server, but we will have to make sure we use different key everytime*
-
+so when we added our SSH key in our first server that we created on the digital ocean console, we added the SSH key to digital ocean and then we selected it, when we created our servers and that gets copied over into our droplet into the .SSH authorized key file. Our server there is a >SSH directory that gets created and authorized key that contains a public key, so we would like to have the key added to our server, but we will have to make sure we use different key everytime*
+**[Source of Note: from Nathan's video](https://www.loom.com/share/7be9b50b73bf42fa8d9c0121a5f4ee9a?t=2252)**:
 
 In our first step we will need to create a new SSH key:
 **We can do so with the following command, but this time you should make sure its not identical to your existing keys.**
@@ -323,9 +323,9 @@ From the DigitalOcean dashboard,
 
 **For example: if we have to this for 10 servers, all we have to do it to select the quantity from the left of box of the script where we created, we can add by clicking the + sign to do the same for as many server as we want**
 
-## Press Create droplet for the droplet to be created.
+## Press Create Droplet to Create the Droplet.
 
-## Step 7: Steps to connect to a server:
+## Step 7: Steps to connect to the remote server:
 
 Depending on how you want to be connected to the server you can put this file into SSH config file with the folowing steps:
 1. Go to the .ssh directory.
@@ -347,20 +347,22 @@ Depending on how you want to be connected to the server you can put this file in
 
  you can check from your terminal whether you are able to connect to your server by typing the following command:
   `ssh your-host-name`
-
-Once connected to your server you can type the following commands:
-
 **Important: you will know if you are connected to the yaml server if you see the following with your commands[yourusername@Yaml ~]$**
 ![Shows cloud-init is running](assets/Yaml.png)
 
+
+Once connected to your server you can type the following commands:
 
 [yourusername@Yaml ~]$whereis nvim (This will show where nvim is installed)
 [yourusername@Yaml ~]$ whereis tmux (this will show wher the tmux is installed)
 [yourusername@Yaml ~]$ exit (to exit from remote server)
 
 *To check if cloud-init is active and running, type the following command:*
->`systemctl status cloud-init` 
+>`systemctl status cloud-init
 
+## Typing above command will show the results you see in the above screenshot which shows its running
+
+# Automating Arch Linux Droplet Setup with doctl and Cloud-init
 
 
 
